@@ -12,4 +12,6 @@
 hs_err_pid*
 
 # all maven generated outputs
-/target
+target/
+.idea/
+*.iml
