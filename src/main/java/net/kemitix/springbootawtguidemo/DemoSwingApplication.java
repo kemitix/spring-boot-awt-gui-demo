@@ -1,5 +1,6 @@
 package net.kemitix.springbootawtguidemo;
 
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +12,7 @@ public class DemoSwingApplication {
      * Application main() method.
      *
      * Uses the fluent {@link SpringApplicationBuilder} to create and run the
-     * {@link SpringApplication} object.
+     * {@link org.springframework.boot.SpringApplication} object.
      *
      * The options specified:
      *
@@ -21,14 +22,14 @@ public class DemoSwingApplication {
      * </ul>
      *
      * Execution is picked up by the {@link Runner} class, which implements
-     * {@link CommandLineRunner}.
+     * {@link org.springframework.boot.CommandLineRunner}.
      *
      * @param args
      */
     public static void main(String[] args) {
         new SpringApplicationBuilder(DemoSwingApplication.class)
                 .headless(false)
-                .web(false)
+                .web(WebApplicationType.NONE)
                 .run(args);
     }
 
