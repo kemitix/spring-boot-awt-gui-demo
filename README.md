@@ -1,16 +1,20 @@
 # spring-boot-awt-gui-demo
+
 Demonstration on how to create an AWT GUI in Spring Boot.
 
-The project contains the needed tweeks to your Spring Boot configuration to allow an AWT or Swing GUI application to
+The project contains the needed tweaks to your Spring Boot configuration to allow an AWT or Swing GUI application to
 run in Spring Boot.
 
 The changes are essentially the following:
 
 ## Disable Headless Mode
 
-`.headless(false)`
+By default a Spring Boot application is set to run in *headless* mode.
+Meaning that it can be run on a server or other environment where there is no graphical interface (the 'head') available.
 
-By default a Spring Boot application is set to run in *headless* mode. Meaning can be run on a server or other environment where there is no graphical interface (the 'head') available. Without doing this, any attempt to instantiate an AWT GUI element will cause a `java.awt.HeadlessException` to be thrown.
+    .headless(false)
+
+Without doing this, any attempt to instantiate an AWT GUI element will cause a `java.awt.HeadlessException` to be thrown.
 
 ## Disable Web Server Mode
 
