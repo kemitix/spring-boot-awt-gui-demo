@@ -1,8 +1,6 @@
 # spring-boot-awt-gui-demo
 Demonstration on how to create an AWT GUI in Spring Boot.
 
-[![Build Status](https://travis-ci.org/kemitix/spring-boot-awt-gui-demo.svg?branch=master)](https://travis-ci.org/kemitix/spring-boot-awt-gui-demo)
-
 The project contains the needed tweeks to your Spring Boot configuration to allow an AWT or Swing GUI application to
 run in Spring Boot.
 
