@@ -1,0 +1,53 @@
+Add subkeys:
+
+????
+
+Publish:
+
+gpg --send-keys --keyserver keyserver.ubuntu.com $KEYID
+gpg --send-keys --keyserver pgp.mit.edu $KEYID
+gpg --send-keys --keyserver pool.sks-keyservers.net $KEYID
+
+Backup:
+
+gpg --export --armor pcampbell@kemitix.net > gpg-key-backup.asc
+gpg --export-secret-keys --armor pcampbell@kemitix.net >> gpg-key-backup.asc
+
+Export sub-keys:
+
+gpg --export-secret-subkeys pcampbell@kemitix.net > subkeys
+
+Remove master keys:
+
+gpg --delete-secret-key pcampbell@kemitix.net
+
+Import sub-keys and clean up:
+
+gpg --import subkeys
+
+shred --remove subkeys
+
+Delete any encryption subkeys:
+
+gpg --edit-key pcampbell@kemitix.net
+
+2
+delkey
+save
+
+Change passphrase:
+
+gpg --edit-key pcampbell@kemitix.net
+passwd
+save
+
+Export keys:
+
+gpg --export --armor pcampbell@kemitix.net > codesigning.asc
+gpg --export-secret-keys --armor pcampbell@kemitix.net >> codesigning.asc
+
+Encrypt keys:
+
+gpg --symmetric --cipher-algo AES256 codesigning.asc
+
+shred codesigning.asc

@@ -1,0 +1,41 @@
+* Deploying using Github Actions
+
+** Actions definition: workflow/sonatype-deploy.yml
+
+When a GitHub Release is created, usually from a tag, this action will trigger.
+
+Using JDK8 the software will be packaged, including running any tests.
+
+Then the Deploy script will sign the created artifacts then deploy them according to the distributionManagement configuration in the `pom.xml`.
+
+** Deploy Script
+
+Uses a signing key provided from the GitHub Actions Secrets as an environment variable to sign the artifact(s) before they are then deployed.
+
+*** Inputs
+
+**** DEPLOY_PROJECTS (optional)
+
+An optional list of modules in a multi-module project to be deployed. If this value is not specified, then all projects will be deployed.
+
+** Maven Configuration
+
+Picks up the credentials from Environment variables for authenticating both with GPG and with the target deployment server (e.g. sonatype-nexus).
+
+*** Inputs
+
+**** NEXUS_USERNAME
+
+The username for your account on the deployment server.
+
+**** NEXUS_PASSWORD
+
+The password for your account on the deployement server.
+
+**** GPG_KEYNAME
+
+The key to use when signing.
+
+**** GPG_PASSPHRASE
+
+The passphrase to unlock the key to use when signing.
